@@ -1,0 +1,158 @@
+﻿@*@model IEnumerable< Restaurant.Models.Menu>*@
+    @model  Restaurant.Models.MenuListViewModel
+@{
+    ViewBag.Title = "Меню";
+
+}
+
+
+<script type="text/javascript">
+    window.onload = initAll;
+    var xhr = false;
+    var xPos, yPos;
+
+    function initAll() {
+        var allLinks = document.getElementsByClassName("links_item");
+
+        for (var i = 0; i < allLinks.length; i++) {
+            allLinks[i].onmouseover = showPreview;
+        }
+    }
+
+    function showPreview(evt) {
+        if (evt) {
+            var url = evt.target;
+        }
+        else {
+            evt = window.event;
+            var url = evt.srcElement;
+        }
+        xPos = evt.clientX;
+        yPos = evt.clientY;
+
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        }
+        else {
+            if (window.ActiveXObject) {
+                try {
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                catch (e) { }
+            }
+        }
+
+        if (xhr) {
+            xhr.onreadystatechange = showContents;
+            xhr.open("GET", url, true);
+            xhr.send(null);
+        }
+        else {
+            alert("Ошибка при создании XMLHttp запроса");
+        }
+        return false;
+    }
+    function showContents() {
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                var outMsg = xhr.responseText;
+            }
+            else {
+                var outMsg = "Проблемы " + xhr.status;
+            }
+            var prevWin = document.getElementById("previewWin");
+            prevWin.innerHTML = outMsg;
+            prevWin.style.top = parseInt(yPos) + 2 + "px";
+            prevWin.style.left = parseInt(xPos) + 2 + "px";
+            prevWin.style.visibility = "visible";
+
+            prevWin.onmouseout = function () {
+                document.getElementById("previewWin").style.visibility = "hidden";
+            }
+        }
+
+    }
+</script>
+
+<div class="row">
+
+
+    <div target="_blank" rel="noopener noreferrer" class="banners_bannerWrapper__HzayB banners_topBanner__2YRov">
+        <div class="banners_bannerImageWrapper__l7EGu">
+            <div class="video" style="padding-top:min(52.666666666666664%, 400px)"></div>
+            <video autoplay="autoplay" muted loop="loop" name="media"><source src="https://res.cloudinary.com/restik/video/upload/f_auto,q_auto,so_0p/v1/pl_demo_vitrina_usp5vqldi/hgyncjtknlbrk5kko1ow.webm" type="video/webm"></video>
+        </div>
+    </div>
+
+    <div class="link">
+        <h3>Наши категории блюд</h3>
+        <div class="grid-link">
+            <a class="links_item" href="~/Links/Burger.htm">Бургеры</a>
+            <a class="links_item" href="~/Links/Dessert.htm">Десерты</a>
+            <a class="links_item" href="~/Links/Pizza.htm">Пицца</a>
+            <a class="links_item" href="~/Links/Breakfast.htm">Завтраки</a>
+        </div>
+        <div id="previewWin"> </div>
+    </div>
+
+    <div class="filter">
+        <div class="search">
+            <div></div>
+            @using (Ajax.BeginForm("MenuSearch", new AjaxOptions { UpdateTargetId = "results" }))
+            {
+                <label class="control-label">Найти блюдо по категории</label>
+
+                <input type="text" name="name" />
+                <input type="submit" value="Найти" class="btn btn-default" />
+            }
+        </div>
+        <div class="forma">
+            <form method="get">
+                <div class="form-inline">
+                    <label class="control-label">Тип: </label>
+                    @Html.DropDownList("Vegetarian", Model.Vegetarian as SelectList,
+                                htmlAttributes: new { @class = "form-control" })
+
+                    <label class="control-label">Цена от: </label>
+                    @Html.DropDownList("Price", Model.Price as SelectList,
+                            htmlAttributes: new { @class = "form-control" })
+
+                    <input type="submit" value="Подобрать" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="results"></div>
+
+
+    <div class="zagolovok"><h2>Меню</h2></div>
+    <div class="Menu">
+        <div class="Menu_grid">
+            @foreach (var item in Model.Menus)
+            {
+                <div class="Menu_forma">
+                    <div class="menu_position_main">
+                        <div class="menu_position">
+                            <p class="menu_position_name">@Html.DisplayFor(modelItem => item.Name)</p>
+                            <p class="menu_position_description">@Html.DisplayFor(modelItem => item.Structure)</p>
+                        </div>
+                        <div class="menu_position_price">
+                            <p class="position_price">@Html.DisplayFor(modelItem => item.Price) ₽</p>
+                            <div class="Menu_price">
+                                @*<button class="btn btn-default">Добавить</button>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="Menu_image">
+                        <img src="@Html.DisplayFor(modelItem => item.Photo)">
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+
+
+
+</div>

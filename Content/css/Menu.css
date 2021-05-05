@@ -1,0 +1,195 @@
+
+.table{
+    text-align: center;
+}
+.table img{
+    width: 200px;
+    height: 200px;
+}
+.table th{
+    text-align: center;
+}
+.video video{
+    width: 100%;
+    max-height: 400px;
+
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.search input{
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.filter{
+    display: flex;
+}
+.forma{
+    margin-left: 20%;
+
+}
+.zagolovok h2{
+    margin-left: 45%;
+    margin-bottom: 20px;
+}
+.Menu_grid{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.Menu_forma{
+    width: 49%;
+    min-width: 290px;
+    min-height: 228px;
+    margin-bottom: 2%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    border-radius: 16px;
+
+    background-color: #f5f5f5;
+    box-shadow: 0 0 8px 1px #c6c5c5;
+    transition: all .2s linear;
+
+}
+.menu_position_main{
+    min-width: 60%;
+    min-height: 60%;
+}
+.menu_position{
+    display: flex;
+    flex-direction: column;
+
+    min-width: 60%;
+    max-width: 60%;
+
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+}
+.menu_position_price{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 30px;
+    justify-content: space-between;
+    padding-top: 20px;
+    height: 30px;
+}
+.Menu_image{
+    min-width: 40%;
+    min-height: 40%;
+}
+.Menu_image a{
+    min-width: 228px;
+    min-height: 228px;
+}
+.Menu_image img{
+    width: 228px;
+    height: 228px;
+    overflow: hidden;
+    background-color: #fafafa;
+    border-left: 1px solid rgba(0,0,0,.1);
+    position: relative;
+}
+
+/* Добавление блюда */
+
+.form-add{
+    display: block;
+    margin-left: 25%;
+}
+.form-add h2{
+margin-left: 20%;}
+.form-add input{
+    display: block;
+    width: 70%;
+    height: 35px;
+    margin-top: 1%;
+    color: #384655;
+    border: 1px solid #bcbccc;
+}
+.form-control{
+    width: 70%;
+    height: 35px;
+    margin-top: 1%;
+}
+.error_price{
+    display: none;
+    font-size: 13px;
+    color: #ff2929;
+}
+.error_structure{
+    display: none;
+    font-size: 13px;
+    color: #ff2929
+}
+.btn-default-2{
+    margin-top: 1%;
+}
+
+.link{
+    text-align: center;
+}
+.link a{
+    text-align: center;
+}
+.grid-link{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.grid-link a{
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 15px 25px;
+    padding: 15px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    transition: 0.4s ease-in-out;
+
+    border-radius: 10px;
+    color: #CEA640;
+    background: #FFF79A;
+    border-bottom: 5px solid #E1B442;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+}
+.grid-link a:hover{
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+}
+#previewWin{
+    background-color: #ff9;
+    width: 200px;
+    height: 330px;
+    padding: 5px;
+    position: absolute;
+    visibility: hidden;
+    border: 1px #CC0 solid;
+    overflow: hidden;
+}
+#previewWin h1, #previewWin h2{
+    font-size: 1.0em;
+}
+
+

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Restaurant.Models.Menu>
+
+<h2>Найдены следующие блюда</h2>
+
+<table class="table">
+    <tr>
+        <th>Название;</th>
+        <th>Цена</th>
+        <th>Тип</th>
+        <th>Состав</th>
+        <th>Фото</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        string idDiv = "discription" + item.Id;
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Price ₽</td>
+            <td>@item.Type</td>
+            <td>
+                <p id="@idDiv">
+                    @Ajax.ActionLink("Загрузить состав", "GetDescription", new { id = item.Id }, new AjaxOptions { UpdateTargetId = @idDiv })
+                </p>
+            </td>
+            <td><img src="@item.Photo"></td>
+            @*<td><button>Добавить</button></td>*@
+        </tr>
+    }
+
+</table>

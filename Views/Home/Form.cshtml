@@ -1,0 +1,127 @@
+﻿@*SubmitForm(Name, Price, Structure, Type)*@
+@Styles.Render("~/Content/css")
+@Styles.Render("~/Content/css/Menu.css")
+@Styles.Render("~/Content/css/contact.css")
+@Scripts.Render("~/Scripts/Validation.js")
+<script>
+    function SubmitForm(Name, Price, Structure, Photo, Vegetarian, Type) {
+        $.ajax(
+            {
+                method: "POST",
+                url: "/Home/Form",
+                data: { Name: Name, Price: Price, Structure: Structure, Photo: Photo, Vegetarian: Vegetarian, Type: Type }
+            }).fail(function () {
+                alert("При передачи данных произошла ошибка");
+            }).done(function (context) {
+                alert(context);
+            });
+    }
+</script>
+
+
+
+
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("London", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Меню", "Index", "Home")</li>
+                <li>@Html.ActionLink("Добавить блюдо", "Form", "Home")</li>
+
+                @*<li>@Html.ActionLink("Связаться", "Contact", "Home")</li>*@
+            </ul>
+        </div>
+    </div>
+</div>
+
+<form onsubmit="SubmitForm(Name, Price, Structure, Photo, Vegetarian, Type)" action="/Home/Form" method="POST">
+    <div>
+
+        <fieldset>
+            <div class="form-add">
+                <h2>ДОБАВИТЬ БЛЮДО</h2>
+
+                <div class="name_input">
+                    <input type="text" name="Name" placeholder="Введите название" required id="name" onblur="checkName();" onfocus="no_error_name();" />
+                    <label class="error_name" id="error_name">Допустимы только символы кириллици</label>
+                </div>
+                <div class="name_input">
+                    <input type="text" name="Price" id="price" placeholder="Введите цену" required onblur="checkPrice();" onfocus="no_error_price();" />
+                    <label class="error_price" id="error_price">Введено не число</label>
+                </div>
+                <div class="name_input">
+                    <input type="text" name="Structure" id="structure" placeholder="Введите состав" required onblur="checkStructure();" onfocus="no_error_structure();" />
+                    <label class="error_structure" id="error_structure">Допустимы только символы кириллици</label>
+                </div>
+                <div class="name_input">
+                    <input type="text" name="Photo" placeholder="Ссылка на фото" required />
+                </div>
+                <select name="Vegetarian" class="form-control">
+                    <option value="Вегетарианское">Вегетарианское</option>
+                    <option value="Не вегетарианское">Не вегетарианское</option>
+                </select>
+                <select name="Type" class="form-control">
+                    <option value="Бургер">Бургер</option>
+                    <option value="Пицца">Пицца</option>
+                    <option value="Завтраки">Завтраки</option>
+                    <option value="Десерты">Десерты</option>
+                </select>
+                <input type="submit" class="btn btn-default-2" />
+            </div>
+        </fieldset>
+    </div>
+</form>
+
+
+@*<form onsubmit="SubmitForm(Name, Price, Structure, Type)" action="/Home/Form" method="POST">
+        <fieldset>
+            <div>
+                <div class="contact">
+                    <div class="images_contact">
+                        <img src="./img/contact_1.png">
+                    </div>
+                    <div class="form">
+                        <div class="form_message">
+                            <div class="hello">
+                                <p id="hello"></p>
+                            </div>
+                            <p class="qwe">Задайте интересующий вопрос</p>
+                            <div class="name_input">
+                                <i class="user_icon"></i>
+                                <input type="text" name="Name" placeholder="Введите название" required />
+                                <label class="error_name" id="error_name">Допустимы только символы кириллици</label>
+                            </div>
+                            <div class="name_input">
+                                <i class="email_icon"></i>
+                                <input type="text" name="Price" placeholder="Введите цену" required />
+                                <label class="error_mail" id="error_mail">Неверно указан адрес почты</label>
+                            </div>
+                            <div class="name_input">
+                                <i class="text_icon"></i>
+                                <input type="text" name="Structure" placeholder="Введите состав" required />
+                                <label class="error_phone" id="error_phone">Неверный формат телефона</label>
+                            </div>
+                            <select class="select_type" name="Type">
+                                <option value="Бургер">Бургер</option>
+                                <option value="Пицца">Пицца</option>
+                                <option value="Завтраки">Завтраки</option>
+                                <option value="Десерты">Десерты</option>
+                            </select>
+                        </div>
+                        <div class="form_button">
+                            <input type="submit" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>*@

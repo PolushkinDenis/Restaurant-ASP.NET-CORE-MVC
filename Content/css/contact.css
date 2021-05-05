@@ -1,0 +1,176 @@
+.contact{
+    /* min-height: 70ch; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.form_message{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    margin-top: 7%
+}
+.form_message input{
+    margin-left: 10px;
+}
+.error_name{
+    display: none;
+    font-size: 13px;
+    color: #ff2929;
+}
+.error_mail{
+    display: none;
+    font-size: 13px;
+    color: #ff2929;
+}
+.error_phone{
+    display: none;
+    font-size: 13px;
+    color: #ff2929;
+}
+.user_icon{
+    background-image: url(../img/contact_user.png);
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+}
+.email_icon{
+    background-image: url(../img/contact_email.png);
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+}
+.text_icon{
+    background-image: url(../img/contact_text.png);
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+}
+#message_text{
+    height: 100px;
+}
+
+.form_message p{
+    font-size: 200%;
+}
+.form_message input{
+    width: 70%;
+    height: 35px;
+    margin-top: 3%;
+    color: #384655;
+    border: 1px solid #bcbccc;
+}
+.form_button{
+    margin-top: 10%;
+    margin-left:22px;
+}
+.form_button input{
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 49px;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    padding: 0 47px;
+    text-decoration: none;
+    color: #fff;
+    border: 0;
+    border-radius: 5px;
+    background: #7accc8;
+    box-shadow: 0 5px 0 #489c98;
+}
+.enter_message:active{
+    top: 5px;
+    background: #489c98;
+
+}
+
+.select_type select{
+    width: 70%;
+    height: 35px;
+    margin-top: 3%;
+    color: #384655;
+    border: 1px solid #bcbccc;
+}
+
+.map{
+    width: 80%;
+    height: 500px;
+    margin-top: 5%;
+    margin-left: 2%;
+    margin-bottom: 70px;
+}
+
+.placemark_layout_container { 
+    position: relative;
+    font-family: Georgia;
+    font-size: 40px;
+    text-align: center;
+    font-weight: bold;
+}
+.qwe{
+    color: #1d5976fc;
+
+}
+.hello{
+    color: #1d5976fc;
+}
+.hello p{
+    font-size: 1.8em;
+}
+
+/* Круглый макет метки */
+.circle_layout {
+    background-color: white;
+    position: absolute;
+    left: -23px;
+    top: -23px;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #225D9C;
+    color: #225D9C;
+    line-height: 40px;
+    /* Это CSS свойство не будет работать в Internet Explorer 8 */
+    border-radius: 50px;
+}
+
+.polygon_layout:after, .polygon_layout:before {
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+}
+
+.polygon_layout:after {
+    border-top-color: #943A43;
+    border-width: 10px;
+    margin-left: -10px;
+}
+
+.polygon_layout:before {
+    border-top-color: #943A43;
+    border-width: 16px;
+    margin-left: -16px;
+}
+
+.footer_1{
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:60px;
+    width:100%;
+    background-color: rgb(45, 45, 45);
+    color: white;
+}
+.footer_1 ul{
+    
+    margin-top: 15px;
+    width: 30px;
+}
+.footer_1 img{
+    
+    margin-top: 15px;
+    margin-left: 5px;
+    width: 30px;
+}
